@@ -1,6 +1,8 @@
 """
 	See 'README.md' for details.
 """
+from os import path
+
 import numpy as np
 import torch
 import torch.nn as nn
@@ -33,7 +35,8 @@ def sequential_inv_mult(V, X):
 # ------ Load c++ and cuda code.  ---------
 t0 = time.time()
 print("Compiling our c++/cuda code, this usually takes 1-2 min. ")
-algo = load(name="fasth", sources=["fasth.cpp", "fasth_cuda.cu"])
+script_path = path.dirname(path.realpath(__file__))
+algo = load(name="fasth", sources=[path.join(script_path, "fasth.cpp"), path.join(script_path, "fasth_cuda.cu")])
 print("Finished compilation, took: %.4fs"%(time.time()-t0))
 
 def algo_compute_dec(V, m):
