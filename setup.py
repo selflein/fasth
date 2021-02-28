@@ -5,7 +5,7 @@ setup(
   version='0.0.1',
   license='LICENSE',
   description='',
-  packages=setuptools.find_packages(),
+  packages=["fasth"],
   long_description=open('README.md').read(),
   long_description_content_type="text/markdown",
   python_requires=">=3.6",
